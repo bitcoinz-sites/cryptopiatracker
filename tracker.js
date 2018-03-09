@@ -213,6 +213,16 @@ function getBalances(){
         }
     }	
     xhr15.send();
+	var xhr16 = new XMLHttpRequest();
+    xhr16.open("GET", "https://api1.ubiqscan.io/v2/getbalance/0x51653dff4aba308d76697bb35aa77b0d3a1783ab", true);
+    xhr16.onload = function(){
+    	if(this.status == 200){
+    		var result = JSON.parse(xhr16.responseText);
+    		DotBalance1 = Number(result.result.tokens.DOT);
+            updatePage();
+        }
+    }
+	xhr16.send();
 }
 
 function start(){
